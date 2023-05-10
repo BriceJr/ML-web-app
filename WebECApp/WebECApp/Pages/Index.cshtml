@@ -1,0 +1,163 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<body>
+    <small>@ViewData["Title"]</small>
+        <div class="row-img">
+            <img id="heroimg" src="/images/jordan.webp">
+        </div>
+        <button class="prev" onclick="prev()">&#8249;</button>
+        <button class="next" onclick="next()">&#8250;</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h1>Welcome to Mill's<br>Legacy</h1>
+                <p>
+                    We make your satistaction our priority by providing you with
+                    great<br>articles at oustanding prices and daily bonuses.
+                </p>
+                <a href="Product" class="btn">Shop with us &#8594;</a>
+            </div>
+        </div>
+    </div>
+    <!------------------products-------------------------->
+    <div class="smallcontainer">
+        <h2 class="title">Products</h2>
+        <div class="row">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-4">
+                    <a asp-page="Details" class="" asp-route-id="@product.Id" title="@product.Name"><img src="/images/@product.ProductImage" alt="@product.Name"></a>
+                    <h4>@product.Name</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <div>@product.Price</div>
+                </div>
+            }
+        </div>
+    </div>
+    <!-------------------offer------------------------------------>
+    <div class="offer">
+        <div class="smallcontainer">
+            <div class="row">
+                <div class="col-2">
+                    <img src="/images/jordan.webp" class="offer-img">
+                </div>
+                <div class="col-2">
+                    <p>Exclusives available now in store. We got you covered</p>
+                    <h2>Jordan SpaceJam3</h2>
+                    <small>
+                        The spaceJam three is an exclusive from the Jordan brand
+                        bringing a blend of style comfort and solidity
+                    </small><br>
+                    <a href="Exclusives" class="btn">View Exclusives &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------comments------------------------>
+    <div class="testimonials">
+        <div class="smallcontainer">
+            <div class="row">
+                @foreach (var comments in Model.Comments)
+                {
+                    var defaultstar = 5 - comments.Ratings;
+                    <div class="col-3">
+                        <i class="fa fa-quote-left"></i>
+                        <p>@comments.Text</p>
+                        <div class="rating">
+                            <span>
+                                @for (int i = 1; i <= comments.Ratings; i++)
+                                {
+                                    <i class="fa fa-star"></i>
+                                }
+                                @for (int i = 1; i <= defaultstar; i++)
+                                {
+                                    <i class="fa fa-star-o"></i>
+                                }
+                            </span>
+                        </div>
+                        <img src="/images/User3.png">
+                        <h3>@comments.UserId</h3>
+                        <small>@comments.TimeStamp</small>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!------------------------brands in store------------------>
+    <div class="brands">
+        <div class="smallcontainer">
+            <div class="row">
+                <div class="col-5">
+                    <img src="/images/nike-logo.jpg">
+                </div>
+                <div class="col-5">
+                    <img src="/images/jordan-logo.jpg">
+                </div>
+                <div class="col-5">
+                    <img src="/images/puma-logo.jpg">
+                </div>
+                <div class="col-5">
+                    <img src="/images/addidaslogo.png">
+                </div>
+                <div class="col-5">
+                    <img src="/images/underarmor-logo.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------categories------------->
+    <div class="testimonials">
+        <div class="smallcontainer">
+            <div class="row">
+                <div class="col-3">
+                    <h2>For Men</h2>
+                </div>
+                <div class="col-3">
+                    <h2>For Women</h2>
+                </div>
+                <div class="col-3">
+                    <h2>For Kids</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<script type="text/javascript">
+    var array = ["/images/Jordan AirFly1.jpg", "/images/nikespace5.jpg", "/images/UnderArmor HoverRise6.jpg", "/images/WMPuma Kaiwa6.jpg", "/images/Addidas FutureShell2.jpg", "/images/myCollageImage.jpg", "/images/jordan.webp"];
+
+    var index = 0;
+    var heroimg = document.getElementById("heroimg");
+    var duration = 4000;
+    next();
+
+    function next() {
+        heroimg.setAttribute("src", array[index]);
+        index = index + 1;
+        if (index > array.length - 1) {
+            index = 0;
+        }
+        setTimeout("next()", duration);
+    }
+
+    function prev() {
+        heroimg.setAttribute("src", array[index]);
+        index = index - 1;
+        if (index < 0) {
+            index = array.length - 1;
+        }
+    }
+
+
+</script>

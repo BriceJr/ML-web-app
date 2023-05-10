@@ -1,0 +1,34 @@
+﻿@page
+@model WebECApp.Pages.Admin.DisplayModel
+@{
+}
+@{
+    Layout = "_AdminLayout";
+}
+
+
+<div class="smallcontainer">
+    <div class="row">
+        <a asp-page="AddForm" class="btn" title="Add">Add Products</a>
+    </div>
+
+    <div class="row">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-4">
+                <img src="/images/@product.ProductImage">
+                <h4>@product.Name</h4>
+                <p class="Price">£@product.Price</p>
+                <p>@product.Description</p>
+                <div class="row">
+                    <div class="col-2">
+                        <a asp-page="RemoveForm" class="btn" asp-route-id="@product.Id" title="Remove">Remove</a>
+                        <a asp-page="UpdateForm" class="btn" asp-route-id="@product.Id" title="Update">Update</a>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>

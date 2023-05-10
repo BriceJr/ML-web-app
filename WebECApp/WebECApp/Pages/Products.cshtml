@@ -1,0 +1,47 @@
+﻿@page
+@model WebECApp.Pages.ProductsModel
+@{
+}
+@{
+    ViewData["Title"] = "Products";
+}
+
+<body>
+    <h3>@ViewData["Title"]/@ViewData["ProdBrand"]/@ViewData["ProdCategory"]</h3>
+
+    <div class="smallcontainer">
+        <div class="row row-2">
+            <h2>All Products</h2>
+            <form method="get">
+                <input type="text" asp-for="StringSearch" />
+                <input type="submit" value="search" />
+            </form>
+            <form>
+                <select asp-for="ProdBrand" asp-items="Model.Brand">
+                    <optgroup label="Sort By Brand">
+                        <option value="">Sort By Brand</option>
+                    </optgroup>
+                </select>
+                <select asp-for="ProdCategory" asp-items="Model.Category">
+                    <optgroup label="Sort By Category">
+                        <option value="">Sort By Category</option>
+                    </optgroup>
+                </select>
+                <input type="submit" value="Go" />
+            </form>
+
+
+        </div>
+        <div class="row">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-4">
+                    <a asp-page="Details" asp-route-id="@product.Id" title="@product.Name"><img src="/images/@product.ProductImage" alt="@product.Name"></a>
+                    <h4>@product.Name</h4>
+                    <p class="Price">£@product.Price</p>
+                    <a asp-page="Checkout" class="btn" asp-page-handler="buy" asp-route-id="@product.Id" title="@product.Name">Order Now</a>
+                </div>
+            }
+        </div>
+    </div>
+</body>

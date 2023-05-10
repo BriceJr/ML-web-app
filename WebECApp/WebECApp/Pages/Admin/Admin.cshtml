@@ -1,0 +1,28 @@
+﻿@page
+@model WebECApp.Pages.Admin.AdminModel
+@{
+}
+@{
+    Layout = "_AdminLayout";
+}
+<div class="smallcontainer">
+    <div class="row">
+        <h2>Welcome Admin @User.Identity.Name</h2>
+    </div>
+</div>
+<div class="testimonials">
+    <div class="smallcontainer">
+        <div class="row">
+            <div class="col-3">
+                <a href="Display"><h2>Products</h2></a>
+            </div>
+            <div class="col-3">
+                <a href="Sales"><h2>Sales</h2></a>
+            </div>
+            <div class="col-3">
+                <a href="Users"><h2>Users</h2></a>
+            </div>
+        </div>
+    </div>
+
+</div>

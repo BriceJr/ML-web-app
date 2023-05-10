@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyWebApplication</title>
+    <link rel="stylesheet" href="~/webstyle.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <Partial name="_LoginPartial" />
+            </div>
+        </div>
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="logo">
+                        <img src="~/images/default.png" width="135">
+                    </div>
+                </div>
+                <div class="navbar">
+                    <nav>
+                        <ul>
+                            <li><a href="">Admin</a></li>
+                            <li><a href="Display">All Products</a></li>
+                            <li><a href="Users">All Users</a></li>
+                            <li><a href="ComRat">Product Ratings</a></li>
+                            <li><a href="Sales">Sales</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col-1">
+                        <h3>Download our App</h3>
+                        <p>Available on both ios and Android devices</p>
+                        <div class="app-logo">
+                            <img src="/images/playstore-logo.png">
+                            <img src="/images/appstore-logo.png">
+                        </div>
+                    </div>
+                    <div class="footer-col-2">
+                        <img src="/images/default.png">
+                        <p>
+                            WALK DIFFERENT, WALK IN OUR SHOES
+                        </p>
+                    </div>
+                    <div class="footer-col-3">
+                        <h3>Useful Links</h3>
+                        <ul>
+                            <li>About</li>
+                            <li>Contact</li>
+                            <li>Return policy</li>
+
+                        </ul>
+                    </div>
+                    <div class="footer-col-4">
+                        <h3>Follow Us</h3>
+                        <ul>
+                            <li>Twitter</li>
+                            <li>Facebook</li>
+                            <li>Instagram</li>
+                            <li>YouTube</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <p class="copyright">Copyright @DateTime.Now.Year - Mill's Legacy</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

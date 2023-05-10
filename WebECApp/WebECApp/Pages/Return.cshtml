@@ -1,0 +1,62 @@
+﻿@page
+@model WebECApp.Pages.ReturnModel
+@{
+    Layout = "_FormLayout";
+}
+<div class="row">
+    <div class="col-2">
+        <form method="post">
+            <div>
+                <label asp-for="@Model.Returns.ReturnID"></label>
+                <div>
+                    <input asp-for="@Model.Returns.ReturnID" readonly="readonly" />
+                    <span asp-validation-for="@Model.Returns.ReturnID" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <label asp-for="@Model.Returns.Reason"></label>
+                <div>
+                    <input asp-for="@Model.Returns.Reason" />
+                    <span asp-validation-for="@Model.Returns.Reason" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <label asp-for="@Model.Returns.TimeStamp"></label>
+                <div>
+                    <input asp-for="@Model.Returns.TimeStamp" placeholder="enter date purchased here" />
+                    <span asp-validation-for="@Model.Returns.TimeStamp" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <label asp-for="@Model.Returns.ProductName"></label>
+                <div>
+                    <input asp-for="@Model.Returns.ProductName" />
+                    <span asp-validation-for="@Model.Returns.ProductName" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <label asp-for="@Model.Returns.UserId"></label>
+                <div>
+                    <input asp-for="@Model.Returns.UserId" value="@User.Identity.Name" />
+                    <span asp-validation-for="@Model.Returns.UserId" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <label asp-for="@Model.Returns.DatePurchased"></label>
+                <div>
+                    <input asp-for="@Model.Returns.DatePurchased" value="@DateTime.Now" type="hidden" />
+                    <span asp-validation-for="@Model.Returns.DatePurchased" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div>
+                <input type="submit" value="Add Product" />
+            </div>
+        </form>
+    </div>
+    <div class="col-2">
+        <div class="logo">
+            <img src="~/images/default.png" width="300">
+        </div>
+    </div>
+</div>

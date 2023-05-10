@@ -1,0 +1,36 @@
+﻿@page
+@model WebECApp.Pages.Admin.ComRatModel
+@{
+}
+<div class="smallcontainer">
+    <div class="smallcontainer cartpage">
+        <table>
+            <tr>
+                <th>User</th>
+                <th>ProductID</th>
+                <th>Comment</th>
+                <th>Rating</th>
+                <th>Date</th>
+            </tr>
+            @foreach (var comment in Model.Comments)
+            {
+                <tr>
+                    <td>
+                        <div class="cartinfo">
+                            <img src="/images/user1.jpg" width="120" />
+                            <div>
+                                <p>@comment.UserId</p>
+                                <br>
+                            </div>
+                        </div>
+                    </td>
+                    <td>@comment.ProductId</td>
+                    <td>@comment.Text</td>
+                    <td>@comment.Ratings</td>
+                    <td>@comment.TimeStamp</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>

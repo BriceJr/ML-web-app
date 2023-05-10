@@ -1,0 +1,126 @@
+﻿@page
+@model WebECApp.Pages.AboutModel
+@{
+}
+<div class="smallcontainer">
+    <div class="row">
+        <div class="myplayer">
+            <video id="myvideo" autoplay>
+                <source src="/images/company-update-copy.mp4" type="video/mp4">
+            </video>
+            <br>
+            <div class="controls">
+                <button id="playbttn">Pause</button>
+                <button id="stopbttn">Stop</button>
+                <input id="slider" type="range" min="0" max="100" value="0">
+                <span id="currenttime"></span> / <span id="durationtime"></span>
+                <button id="volctrl">Mute</button>
+                <input id="volslide" type="range" min="0" max="100" value="100">
+            </div>
+        </div>
+    </div>
+    <br />
+</div>
+<br />
+<br />
+<div class="smallcontainer">
+    <div class="row">
+        <h3 class="title">Return Policy</h3>
+        <p>
+            Mills legacy has a maintained a direct customer centric policy over the years. Products which
+            our customers find dissatisying or which arrive with unforseen damages may be shipped back within a 15day time
+            frame. A <a href="Return"><small>return form</small></a> is made available for our customers to help manage this. It should be notted that
+            Mills legacy doesnt do full cash refund on payments made but will allow customers pick an article of same
+            or atleast three quarters the value of the originally purchased item and the difference will be paid to them
+            through the initial method of payment.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <a href="Return" class="bot" >Return form</a>
+</div>
+<div class="row">
+    <hr />
+    <a asp-page="Admin/Admin"><small>Privacy</small></a>
+</div>
+
+
+<script type="text/javascript">
+    // set object refernces
+    var vid = document.getElementById("myvideo");
+    var currenttime = document.getElementById("currenttime");
+    var durationtime = document.getElementById("durationtime");
+    var plbttn = document.getElementById("playbttn");
+    var vol = document.getElementById("volctrl");
+    var stopbtn = document.getElementById("stopbttn");
+    var slide = document.getElementById("slider");
+    var volslide = document.getElementById("volslide");
+
+    //play/pause vid function
+    function playvid() {
+        if (vid.paused) {
+            vid.play();
+            plbttn.innerHTML = "Pause";
+        } else {
+            vid.pause();
+            plbttn.innerHTML = "Play";
+        }
+    }
+    // stop function
+    function stopvid() {
+        vid.pause();
+        vid.currentTime = 0;
+        plbttn.innerHTML = "Play";
+    }
+    //volume function
+    function volvid() {
+        if (vid.muted) {
+            vid.muted = false;
+            volslide.value = 100;
+            vol.innerHTML = "Mute";
+        } else {
+            vid.muted = true;
+            volslide.value = 0;
+            vol.innerHTML = "Unmute";
+        }
+    }
+    // volume slider
+    function volslidvid() {
+        vid.volume = volslide.value / 100;
+
+    }
+    // video slider(clicking)
+    function slidevid() {
+        vid.currentTime = vid.duration * (slide.value / 100);
+    }
+    // video slider(pulling)
+    function movevid() {
+        slide.value = vid.currentTime * (100 / vid.duration);
+        var mins = Math.floor(vid.currentTime / 60);
+        var secs = Math.floor(vid.currentTime - mins * 60);
+        var duramins = Math.floor(vid.duration / 60);
+        var durasecs = Math.floor(vid.duration - mins * 60);
+        if (secs < 10) {
+            secs = "0" + secs;
+        }
+        if (durasecs < 10) {
+            durasecs = "0" + durasecs;
+        }
+        if (mins < 10) {
+            mins = "0" + mins;
+        }
+        if (duramins < 10) {
+            duramins = "0" + duramins;
+        }
+        currenttime.innerHTML = mins + ":" + secs;
+        durationtime.innerHTML = duramins + ":" + durasecs;
+    }
+
+    // adding event listeners
+    plbttn.addEventListener("click", playvid);
+    vol.addEventListener("click", volvid);
+    stopbtn.addEventListener("click", stopvid);
+    slide.addEventListener("change", slidevid);
+    vid.addEventListener("timeupdate", movevid);
+    volslide.addEventListener("change", volslidvid);
+</script>

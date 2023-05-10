@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebECApp</title>
+    <link rel="stylesheet" href="/webstyle.css" type="text/css">
+    <script src="/webanim.js" type="text/javascript" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="raw">
+                <Partial name="_LoginPartial" />
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="logo">
+                        <img src="~/images/default.png" width="135">
+                    </div>
+                </div>
+                <div class="navbar">
+
+                    <nav>
+                        <ul id="ECmenu">
+                            <li><a href="index">Home</a></li>
+                            <li><a href="Products">Products</a></li>
+                            <li><a href="About">About</a></li>
+                            <li><a href="Contact">Contact</a></li>
+                            <li><a href="Checkout">Cart</a></li>
+                        </ul>
+                    </nav>
+                    <a href="Checkout"><img src="/images/shopping-cart-1105047_640.png" height="30" width="30"></a>
+                    <img src="/images/menu-2.png" class="menu-icon" onclick="menudrop()">
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <div class="container">
+
+        @RenderBody()
+
+    </div>
+    <!--------------------------footer------------------------->
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col-1">
+                        <h3>Download our App</h3>
+                        <p>Available on both ios and Android devices</p>
+                        <div class="app-logo">
+                            <img src="/images/playstore-logo.png">
+                            <img src="/images/appstore-logo.png">
+                        </div>
+                    </div>
+                    <div class="footer-col-2">
+                        <img src="/images/default.png">
+                        <p>
+                            WALK DIFFERENT, WALK IN OUR SHOES
+                        </p>
+                    </div>
+                    <div class="footer-col-3">
+                        <h3>Useful Links</h3>
+                        <ul>
+                            <li><a href="About">About Us</a></li>
+                            <li><a href="Contact">Contact Us</a></li>
+                            <li><a href="About">Return policy</a></li>
+                            <li><a asp-page="Admin/Admin">Privacy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col-4">
+                        <h3>Follow Us</h3>
+                        <ul>
+                            <li><a href="https://twitter.com/MillsLegacy">Twitter</a></li>
+                            <li><a href="https://www.facebook.com/mills.legacy.54">Facebook</a></li>
+                            <li><a href="https://www.instagram.com/mills_legacy/">Instagram</a></li>
+                            <li><a href="https://studio.youtube.com/channel/UCa0Z8dbQLmu7iWIQjg9y0CA/videos/upload?filter=%5B%5D&sort=%7B%22columnType%22%3A%22date%22%2C%22sortOrder%22%3A%22DESCENDING%22%7D">YouTube</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <p class="copyright">Copyright @DateTime.Now.Year - Mill's Legacy</p>
+            </div>
+        </div>
+    </footer>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

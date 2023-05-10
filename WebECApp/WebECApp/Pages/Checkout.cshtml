@@ -1,0 +1,74 @@
+﻿@page
+@model WebECApp.Pages.CheckoutModel
+@{
+}
+<body>
+    <div class="smallcontainer cartpage">
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Select Size</th>
+                <th>Subtotal</th>
+            </tr>
+
+            @foreach (var cart in Model.Cart)
+            {
+                <tr>
+                    <td>
+                        <div class="cartinfo">
+                            <img src="/images/@cart.Product.ProductImage" width="120" />
+                            <div>
+                                <p>@cart.Product.Name</p>
+                                <small>£@cart.Product.Price</small>
+                                <br>
+                                <a asp-page="Checkout" asp-page-handler="delete" asp-route-id="@cart.Product.Id">remove</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>@cart.Quantity</td>
+                    <td>
+                        <select>
+                            <option>select size</option>
+                            <option>small</option>
+                            <option>medium</option>
+                            <option>large</option>
+                            <option>extra large</option>
+                        </select>
+                    </td>
+                    <td>£@(cart.Product.Price * cart.Quantity)</td>
+                </tr>
+            }
+        </table>
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Delivery</td>
+                    <td>£10.00</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>£@Model.Total</td>
+                </tr>
+            </table>
+            <br />
+        </div>
+        <br />
+        <a asp-page="Products" class="btn">continue shopping</a>
+    </div>
+    <br />
+    <form method="post">
+        @foreach (var cart in Model.Cart)
+        {
+            <input type="hidden" asp-for="@Model.Carts.Name" value="@cart.Product.Name" />
+            <input type="hidden" asp-for="@Model.Carts.DateTime" value="@DateTime.Now" />
+            <input type="hidden" asp-for="@Model.Carts.UserID" value="@User.Identity.Name" />
+            <input type="hidden" asp-for="@Model.Carts.ProductID" value="@cart.Product.Id" />
+            <input type="hidden" asp-for="@Model.Carts.Quantity" value="@cart.Quantity" />
+            <input type="hidden" asp-for="@Model.Carts.Total" value="@(cart.Quantity * cart.Product.Price)" />
+        }
+
+        <input type="submit" class="btn" value="Confirm Purchase" />
+    </form>
+
+</body>

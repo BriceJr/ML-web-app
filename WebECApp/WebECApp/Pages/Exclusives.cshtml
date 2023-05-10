@@ -1,0 +1,45 @@
+﻿@page
+@model WebECApp.Pages.ExclusivesModel
+@{
+    ViewData["Title"] = "Exclusives page";
+}
+<div class="smallcontainer">
+    <small>@ViewData["Title"]</small>
+    @foreach (var product in Model.Products)
+    {
+        <div class="single-product">
+            <div class="row">
+                <div class="col-2">
+                    <img src="/images/@product.ProductImage" width="500" id="productimg">
+                </div>
+                <div class="col-2">
+                    <small>@product.Category/@product.Brand</small>
+                    <h1>@product.Name</h1>
+                    <h4>£@product.Price</h4>
+                    <h3>Product Details <i class="fa fa-indent"></i></h3>
+                    <br>
+                    <p>@product.Description</p>
+                </div>
+                <div class="smallimgrow">
+                    <div class="smallimgcol">
+                        <img src="/images/@product.Image_2" width="100" class="smallimg">
+                    </div>
+                    <div class="smallimgcol">
+                        <img src="/images/@product.Image_3" width="100" class="smallimg">
+                    </div>
+                    <div class="smallimgcol">
+                        <img src="/images/@product.Image_4" width="100" class="smallimg">
+                    </div>
+                    <div class="smallimgcol">
+                        <img src="/images/@product.Image_5" width="100" class="smallimg">
+                    </div>
+                    <div class="smallimgcol">
+                        <img src="/images/@product.Image_6" width="100" class="smallimg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>

@@ -1,0 +1,39 @@
+﻿@page
+@model WebECApp.Pages.Admin.SalesModel
+@{
+}
+<div class="smallcontainer">
+    <div class="smallcontainer cartpage">
+        <table>
+            <tr>
+                <th>User</th>
+                <th>ProductID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>CartID</th>
+            </tr>
+            @foreach (var cart in Model.Carts)
+            {
+                <tr>
+                    <td>
+                        <div class="cartinfo">
+                            <img src="/images/user1.jpg" width="120" />
+                            <div>
+                                <p>@cart.UserID</p>
+                                <small></small>
+                                <br>
+                            </div>
+                        </div>
+                    </td>
+                    <td>@cart.ProductID</td>
+                    <td>@cart.Name</td>
+                    <td>@cart.Quantity</td>
+                    <td>@cart.Total</td>
+                    <td>@cart.CartID</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>

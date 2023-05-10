@@ -1,0 +1,75 @@
+﻿@page "{Id}"
+@model WebECApp.Pages.DetailsModel
+@{
+}
+
+<body>
+    <div class="container">
+        <a href="##" onClick="history.go(-1); return false;">Go back</a>
+        <hr />
+        <div class="smallcontainer">
+            <div class="single-product">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="/images/@Model.Products.ProductImage" width="500" id="productimg">
+                    </div>
+                    <div class="col-2">
+                        <small>@Model.Products.Category/@Model.Products.Brand</small>
+                        <h1>@Model.Products.Name</h1>
+                        <h4>£@Model.Products.Price</h4>
+                        <h3>Product Details <i class="fa fa-indent"></i></h3>
+                        <br>
+                        <p>@Model.Products.Description</p>
+                    </div>
+                    <div class="smallimgrow">
+                        <div class="smallimgcol">
+                            <img src="/images/@Model.Products.Image_2" width="100" class="smallimg">
+                        </div>
+                        <div class="smallimgcol">
+                            <img src="/images/@Model.Products.Image_3" width="100" class="smallimg">
+                        </div>
+                        <div class="smallimgcol">
+                            <img src="/images/@Model.Products.Image_4" width="100" class="smallimg">
+                        </div>
+                        <div class="smallimgcol">
+                            <img src="/images/@Model.Products.Image_5" width="100" class="smallimg">
+                        </div>
+                        <div class="smallimgcol">
+                            <img src="/images/@Model.Products.Image_6" width="100" class="smallimg">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a asp-page="Checkout" asp-page-handler="buy" class="btn" asp-route-id="@Model.Products.Id" title="@Model.Products.Name">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="smallcontainer">
+            <div class="row row-2">
+            </div>
+        </div>
+        <div class="smallcontainer">
+            <div class="row">
+                <form method="post" id="commentform">
+                    <input type="hidden" asp-for="@Model.Comments.CommentID" value="" />
+                    <input type="hidden" asp-for="@Model.Comments.TimeStamp" value="@DateTime.Now" />
+                    <input type="hidden" asp-for="@Model.Comments.UserId" value="@User.Identity.Name" />
+                    <input type="hidden" asp-for="@Model.Comments.ProductId" value="@Model.Products.Id" />
+                    <div class="form-group">
+                        <div class="row row-2">
+                            <p>please give a star rating on 5</p>
+                            <span class="text-warning float-right">
+                                <i class="Ratingstar fa fa-star"></i>
+                                <input asp-for="@Model.Comments.Ratings" min="1" max="5" />
+                            </span>
+                        </div>
+                        <label>Please Enter Your Comment</label>
+                        <textarea class="form-control" rows="3" asp-for="@Model.Comments.Text" placeholder="write your comment here."></textarea>
+                    </div>
+                    <button class="btn" type="submit">Leave Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

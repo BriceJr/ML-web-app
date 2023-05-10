@@ -1,0 +1,111 @@
+﻿@page
+@model WebECApp.Pages.Admin.UpdateFormModel
+@{
+}
+@{
+    Layout = "_AdminLayout";
+}
+<a href="##" onClick="history.go(-1); return false;">Go back</a>
+<hr />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <form method="post">
+                <div>
+                    <label asp-for="@Model.Products.Id"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Id" readonly="readonly" />
+                        <span asp-validation-for="@Model.Products.Id" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.Name"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Name" />
+                        <span asp-validation-for="@Model.Products.Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.Price"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Price" />
+                        <span asp-validation-for="@Model.Products.Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.Description"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Description" />
+                        <span asp-validation-for="@Model.Products.Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.ProductImage"></label>
+                    <div>
+                        <input asp-for="@Model.Products.ProductImage" />
+                        <span asp-validation-for="@Model.Products.ProductImage" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.Image_2"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Image_2" />
+                        <span asp-validation-for="@Model.Products.Image_2" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.Image_3"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Image_3" />
+                        <span asp-validation-for="@Model.Products.Image_3" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.Image_4"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Image_4" />
+                        <span asp-validation-for="@Model.Products.Image_4" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.Image_5"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Image_5" />
+                        <span asp-validation-for="@Model.Products.Image_5" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.Image_6"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Image_6" />
+                        <span asp-validation-for="@Model.Products.Image_6" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.Category"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Category" />
+                        <span asp-validation-for="@Model.Products.Category" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="@Model.Products.Brand"></label>
+                    <div>
+                        <input asp-for="@Model.Products.Brand" />
+                        <span asp-validation-for="@Model.Products.Brand" class="text-danger"></span>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <input type="submit" value="Update Product" />
+                </div>
+            </form>
+        </div>
+        <div class="col-2">
+            <div class="logo">
+                <img src="~/images/default.png" width="300">
+            </div>
+        </div>
+    </div>
+</div>
